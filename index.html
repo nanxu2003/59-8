@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanta MEDIA LIMITED | 醫療設備貿易</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0b3d3d',      // 深藍綠
+                            deep: '#06282a',
+                            primary: '#0d9488',
+                            teal: '#14b8a6',
+                            accent: '#2dd4bf',     // 醫療青
+                            cyan: '#5eead4',
+                            light: '#f0fbfa'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-nav {
+            background: rgba(6, 40, 42, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(45, 212, 191, 0.25);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(6, 40, 42, 0.88), rgba(6, 40, 42, 0.72)), url('https://picsum.photos/id/96/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(13, 148, 136, 0.3);
+        }
+
+        .cross-bg {
+            background-image: linear-gradient(rgba(6, 40, 42, 0.95), rgba(6, 40, 42, 0.92)),
+                radial-gradient(circle at 25% 35%, rgba(45, 212, 191, 0.22) 0 2px, transparent 2px),
+                radial-gradient(circle at 70% 65%, rgba(94, 234, 212, 0.18) 0 2px, transparent 2px),
+                radial-gradient(circle at 45% 15%, rgba(45, 212, 191, 0.15) 0 2px, transparent 2px);
+            background-size: 100% 100%, 55px 55px, 65px 65px, 45px 45px;
+        }
+
+        .serif-title { font-family: 'Noto Serif TC', serif; }
+    </style>
+</head>
+<body class="bg-brand-light text-slate-700 antialiased overflow-x-hidden">
+
+    <!-- 頂部公告 -->
+    <div class="bg-brand-deep text-teal-200 text-xs py-2 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <span><i class="fas fa-truck-medical mr-2"></i>全新冷鏈物流中心正式啟用，溫度全程可追溯。</span>
+            <span class="hidden md:block">醫療設備諮詢專線：74847546</span>
+        </div>
+    </div>
+
+    <!-- 導航 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-gradient-to-br from-brand-primary to-brand-accent rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-teal-500/40">
+                    <i class="fas fa-staff-snake"></i>
+                </div>
+                <div class="text-white">
+                    <h1 class="font-bold text-lg leading-tight font-display">Vanta MEDIA</h1>
+                    <p class="text-[10px] tracking-[0.3em] text-teal-300 uppercase">Medical Trading</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-white text-sm font-medium">
+                <a href="#home" class="hover:text-teal-300 transition">首頁</a>
+                <a href="#about" class="hover:text-teal-300 transition">關於我們</a>
+                <a href="#products" class="hover:text-teal-300 transition">產品範疇</a>
+                <a href="#quality" class="hover:text-teal-300 transition">品質體系</a>
+                <a href="#contact" class="hover:text-teal-300 transition">聯絡我們</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-block px-6 py-2.5 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-full hover:opacity-90 transition duration-300 text-sm shadow-lg shadow-teal-500/30">
+                獲取報價
+            </a>
+
+            <button class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center mt-16">
+            <div class="text-white">
+                <span class="inline-block py-1 px-4 bg-teal-400/15 border border-teal-400/50 rounded-full text-teal-300 text-sm mb-6 tracking-widest reveal">MEDICAL EXCELLENCE · GLOBAL REACH</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight font-display reveal" style="transition-delay: 100ms;">
+                    守護生命，<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-cyan">連接全球醫療</span>
+                </h2>
+                <p class="text-lg text-gray-200 mb-10 leading-relaxed reveal" style="transition-delay: 200ms;">
+                    Vanta MEDIA LIMITED 是香港領先的醫療設備貿易公司，為醫院、診所及醫療機構引進全球頂尖醫療設備與耗材，從採購到安裝提供一條龍專業服務。
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 reveal" style="transition-delay: 300ms;">
+                    <a href="#products" class="px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-lg hover:opacity-90 transition shadow-lg shadow-teal-500/30">
+                        探索產品範疇 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg font-bold hover:bg-white/20 transition">
+                        預約商務洽談
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block reveal" style="transition-delay: 200ms;">
+                <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-2xl">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="font-bold text-white"><i class="fas fa-heart-pulse text-teal-300 mr-2"></i>在庫設備實時狀態</h4>
+                        <span class="text-xs text-teal-300 px-3 py-1 bg-teal-400/10 rounded-full">LIVE</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-x-ray text-xl text-teal-300"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">數碼 X 光系統</p>
+                                <div class="mt-1 h-1.5 bg-white/15 rounded-full"><div class="h-1.5 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full" style="width:92%"></div></div>
+                            </div>
+                            <span class="text-xs text-teal-300">現貨</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-microscope text-xl text-teal-300"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">全自動生化分析儀</p>
+                                <div class="mt-1 h-1.5 bg-white/15 rounded-full"><div class="h-1.5 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full" style="width:78%"></div></div>
+                            </div>
+                            <span class="text-xs text-teal-300">在途</span>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                            <i class="fas fa-bed-pulse text-xl text-teal-300"></i>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold text-white">ICU 監護儀套裝</p>
+                                <div class="mt-1 h-1.5 bg-white/15 rounded-full"><div class="h-1.5 bg-gradient-to-r from-brand-primary to-brand-accent rounded-full" style="width:85%"></div></div>
+                            </div>
+                            <span class="text-xs text-teal-300">現貨</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-200 mt-5"><i class="fas fa-certificate text-teal-300 mr-1"></i>全部設備符合 ISO 13485 及 CE / FDA 認證</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- 數據統計 -->
+    <section class="py-10 bg-white relative -mt-10 z-20 shadow-xl rounded-t-3xl mx-4 md:mx-10">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="reveal">
+                <div class="font-display text-4xl font-bold text-brand-primary mb-2 counter" data-target="1200">0</div>
+                <div class="text-gray-500 text-sm">+ 醫療機構客戶</div>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms;">
+                <div class="font-display text-4xl font-bold text-brand-accent mb-2 counter" data-target="35">0</div>
+                <div class="text-gray-500 text-sm">個國家與地區覆蓋</div>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <div class="font-display text-4xl font-bold text-brand-primary mb-2 counter" data-target="5000">0</div>
+                <div class="text-gray-500 text-sm">+ 項設備交付紀錄</div>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <div class="font-display text-4xl font-bold text-brand-accent mb-2 counter" data-target="98">0</div>
+                <div class="text-gray-500 text-sm">% 客戶滿意度</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative reveal">
+                    <img src="https://picsum.photos/id/42/800/600" alt="醫療設備倉儲" class="rounded-2xl shadow-2xl z-10 relative">
+                    <div class="absolute -bottom-8 -right-8 bg-gradient-to-br from-brand-primary to-brand-accent text-white px-8 py-6 rounded-2xl shadow-xl">
+                        <p class="font-display font-bold text-3xl">15</p>
+                        <p class="text-sm text-teal-100">年醫療貿易深耕</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal">
+                    <h3 class="text-brand-accent font-bold tracking-[0.3em] uppercase mb-3">關於Vanta MEDIA LIMITED</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6 leading-snug serif-title">以專業與誠信，<br>搭建醫療供應橋樑</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Vanta MEDIA LIMITED 於 2011 年成立，總部位於 Rm 60 3/F YAU LEE CENTER 45 HOI YUEN RD 香港醫療科技園，專注高端醫療設備及耗材的全球採購與分銷。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        我們與德國、美國、日本及瑞士的 60 多個頂尖品牌建立長期代理合作，覆蓋醫學影像、檢驗診斷、手術室及重症監護四大領域，並提供融資租賃與舊機回購等增值服務。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> ISO 13485 認證</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> 衞生署進口許可</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> 原廠授權代理</div>
+                        <div class="flex items-center"><i class="fas fa-certificate text-brand-accent mr-2"></i> 冷鏈運輸認證</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 產品範疇 -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">PRODUCT LINES</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4 serif-title">核心產品範疇</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">六大產品線，全面覆蓋醫療機構的採購需求。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">醫學影像設備</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        CT、MRI、超聲及數碼 X 光系統，提供安裝調試與操作培訓。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">檢驗與診斷</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        生化、免疫及分子診斷設備，配合試劑耗材長期穩定供應。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-bed-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">重症監護設備</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        ICU 監護儀、呼吸機及除顫器，7×24 小時技術支援。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-hand-holding-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">手術室方案</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        手術床、無影燈、內窺鏡系統及微創手術器械整體解決方案。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-light rounded-2xl border border-gray-100 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">耗材與試劑</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        高值耗材、檢測試劑及防護用品，常備庫存快速響應。
+                    </p>
+                    <a href="#contact" class="text-brand-primary text-sm font-semibold hover:underline">了解更多 &rarr;</a>
+                </div>
+
+                <div class="card-hover p-8 bg-brand-dark rounded-2xl transition-all duration-300 reveal text-white" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-teal-400/20 text-teal-300 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-rotate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">二手設備回購</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed mb-4">
+                        專業評估舊機殘值，以舊換新方案助機構升級設備，降低更新成本。
+                    </p>
+                    <a href="#contact" class="text-teal-300 text-sm font-semibold hover:underline">查詢回購報價 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品質體系 -->
+    <section id="quality" class="py-20 cross-bg text-white relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-teal-300 font-bold tracking-[0.3em]">QUALITY ASSURANCE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4 serif-title">四重品質保障體系</h2>
+                <p class="text-gray-300 max-w-xl mx-auto">從源頭到床邊，每一個環節都可追溯、可驗證。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal">
+                    <div class="w-16 h-16 bg-teal-400/15 text-teal-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">品牌授權核驗</h4>
+                    <p class="text-gray-200 text-sm">原廠授權書與海關報關文件雙重核驗</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-teal-400/15 text-teal-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">全程冷鏈監控</h4>
+                    <p class="text-gray-200 text-sm">溫濕度感測器實時上報，異常即時預警</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-teal-400/15 text-teal-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">到貨開箱驗證</h4>
+                    <p class="text-gray-200 text-sm">工程師現場開箱點驗，出具驗收報告</p>
+                </div>
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-teal-400/15 text-teal-300 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">終身技術支援</h4>
+                    <p class="text-gray-200 text-sm">原廠零件保障 10 年，專屬客服一對一跟進</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 流程 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold text-brand-dark serif-title">合作流程五步曲</h2>
+                <p class="text-gray-500 mt-2">從需求溝通到設備上線，平均 4-8 週完成</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-[5%] right-[5%] h-0.5 bg-teal-200"></div>
+
+                <div class="text-center reveal">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-clipboard-list text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">1. 需求評估</h4>
+                    <p class="text-gray-500 text-sm px-4">了解臨床需求與預算範圍。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-earth-asia text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">2. 全球尋源</h4>
+                    <p class="text-gray-500 text-sm px-4">對比多品牌方案與報價。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-file-signature text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">3. 合約簽訂</h4>
+                    <p class="text-gray-500 text-sm px-4">付款條款與交付時程鎖定。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 300ms;">
+                    <div class="w-24 h-24 bg-brand-light mx-auto rounded-full flex items-center justify-center border-4 border-brand-primary shadow-lg mb-6">
+                        <i class="fas fa-ship text-3xl text-brand-primary"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">4. 物流清關</h4>
+                    <p class="text-gray-500 text-sm px-4">冷鏈運輸與報關一站式處理。</p>
+                </div>
+
+                <div class="text-center reveal" style="transition-delay: 400ms;">
+                    <div class="w-24 h-24 bg-brand-deep mx-auto rounded-full flex items-center justify-center border-4 border-brand-accent shadow-lg mb-6">
+                        <i class="fas fa-rocket text-3xl text-brand-accent"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">5. 安裝培訓</h4>
+                    <p class="text-gray-500 text-sm px-4">上線調試與醫護培訓。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客戶信賴 -->
+    <section class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4 serif-title">客戶信賴之選</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">來自亞太區醫療機構的真實評價。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-full flex items-center justify-center text-xl font-bold mr-4">李</div>
+                        <div><p class="font-bold text-gray-800">李院長</p><p class="text-xs text-gray-500">仁和醫院 · 台灣</p></div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed italic">「Vanta MEDIA LIMITED 為我們整棟新院區提供全套影像及手術室設備，從選型到安裝僅用 6 週，專業度遠超預期。」</p>
+                    <div class="mt-4 text-amber-400 text-sm">★★★★★</div>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-full flex items-center justify-center text-xl font-bold mr-4">Dr</div>
+                        <div><p class="font-bold text-gray-800">Dr. Nguyen</p><p class="text-xs text-gray-500">Hanoi Medical Center · 越南</p></div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed italic">「冷鏈運輸全程可追溯，試劑耗材品質穩定，已連續合作 5 年，是我們在東南亞最信賴的供應商。」</p>
+                    <div class="mt-4 text-amber-400 text-sm">★★★★★</div>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 text-brand-primary rounded-full flex items-center justify-center text-xl font-bold mr-4">陳</div>
+                        <div><p class="font-bold text-gray-800">陳主任</p><p class="text-xs text-gray-500">港安診所集團 · 香港</p></div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed italic">「舊機回購方案幫我們節省了 40% 的設備升級成本，新機安裝後還有專人培訓，服務非常到位。」</p>
+                    <div class="mt-4 text-amber-400 text-sm">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 增值服務 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-accent font-bold tracking-[0.3em]">VALUE-ADDED</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-3 mb-4 serif-title">全方位增值服務</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">不止於供應，更為您的設備保駕護航。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 rounded-2xl border border-teal-100 bg-teal-50/50 reveal">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fas fa-wrench"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">預防性維護</h4>
+                    <p class="text-gray-500 text-sm">年度保養計劃，延長設備壽命 30%+</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl border border-teal-100 bg-teal-50/50 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fas fa-graduation-cap"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">專業培訓</h4>
+                    <p class="text-gray-500 text-sm">原廠工程師授課，頒發操作認證證書</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl border border-teal-100 bg-teal-50/50 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fas fa-hand-holding-dollar"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">融資租賃</h4>
+                    <p class="text-gray-500 text-sm">靈活分期方案，低至月供 3% 手續費</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl border border-teal-100 bg-teal-50/50 reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-primary rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"><i class="fas fa-headset"></i></div>
+                    <h4 class="font-bold text-gray-800 mb-2">7×24 響應</h4>
+                    <p class="text-gray-500 text-sm">緊急故障 4 小時到場，全年無休支援</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-r from-brand-deep to-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 40%, #2dd4bf 2px, transparent 2px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 serif-title">讓優質醫療設備觸手可及</h2>
+            <p class="text-xl text-gray-100 mb-10">提交您的採購需求，專屬醫療顧問 24 小時內回覆。</p>
+            <a href="#contact" class="inline-block px-10 py-4 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-full shadow-xl hover:opacity-90 transform hover:scale-105 transition duration-300">
+                免費獲取方案
+            </a>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer id="contact" class="bg-brand-deep text-gray-200 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <h3 class="font-bold text-white text-2xl mb-6 font-display">Vanta MEDIA LIMITED</h3>
+                    <p class="mb-6 text-sm leading-relaxed">
+                        Vanta MEDIA LIMITED，以專業醫療供應鏈，守護每一間醫療機構。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">快速連結</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-teal-300 transition">首頁</a></li>
+                        <li><a href="#about" class="hover:text-teal-300 transition">關於我們</a></li>
+                        <li><a href="#products" class="hover:text-teal-300 transition">產品範疇</a></li>
+                        <li><a href="#quality" class="hover:text-teal-300 transition">品質體系</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition">售後服務</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">聯絡方式</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-teal-300"></i>
+                            <span>Rm 60 3/F YAU LEE CENTER 45 HOI YUEN RD</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-teal-300"></i>
+                            <a href="mailto:contact@vantamediahk.com" class="hover:text-white transition">contact@vantamediahk.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-teal-300"></i>
+                            <a href="tel:74847546" class="hover:text-white transition text-lg font-bold">74847546</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-globe mr-3 text-teal-300"></i>
+                            <span>vantamediahk.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6">索取報價</h4>
+                    <form onsubmit="event.preventDefault(); alert('感謝您的查詢，醫療設備顧問會於1個工作天內與您聯絡！');" class="space-y-3">
+                        <input type="text" placeholder="您的稱呼" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-teal-300 outline-none text-sm">
+                        <input type="text" placeholder="機構名稱" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-teal-300 outline-none text-sm">
+                        <textarea placeholder="需要採購的設備類型" rows="3" class="w-full bg-white/5 border border-white/10 rounded py-3 px-4 text-white focus:ring-2 focus:ring-teal-300 outline-none text-sm"></textarea>
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold py-3 rounded hover:opacity-90 transition">提交查詢</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 Vanta MEDIA LIMITED 版權所有</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-teal-300">私隱政策</a>
+                    <a href="#" class="hover:text-teal-300">醫療設備註冊</a>
+                    <a href="#" class="hover:text-teal-300">條款及細則</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" id="backToTop" class="fixed bottom-8 right-8 bg-gradient-to-r from-brand-primary to-brand-accent text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 transition-all duration-300 z-40 hover:opacity-90">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-5');
+                backToTop.classList.remove('translate-y-20');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-5');
+                backToTop.classList.add('translate-y-20');
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.querySelector('.counter') && !entry.target.dataset.counted) {
+                        startCounters(entry.target);
+                        entry.target.dataset.counted = true;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function startCounters(section) {
+            const counters = section.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        document.querySelector('.fa-bars')?.parentElement?.addEventListener('click', () => {
+            alert('移動端菜單點擊 (此處可擴展側邊欄邏輯)');
+        });
+    </script>
+</body>
+</html>
